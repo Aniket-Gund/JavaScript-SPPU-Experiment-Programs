@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Set Operations</title>
+</head>
+<body>
+  <script>
+    var setA = new Set([1, 2, 3, 4, 5]);
+    var setB = new Set([2, 3, 4, 6]);
+
+    function setUnionOp() {
+      var unionSet = new Set([...setA, ...setB]);
+      alert(`Union: ${Array.from(unionSet).join(', ')}`);
+    }
+
+    function setIntersectionOp() {
+      var intersectionSet = new Set([...setB].filter(i => setA.has(i)));
+      alert(`Intersection: ${Array.from(intersectionSet).join(', ')}`);
+    }
+
+    function setDifferenceOp() {
+      var differenceSet = new Set([...setA].filter(i => !setB.has(i)));
+      alert(`Difference (A - B): ${Array.from(differenceSet).join(', ')}`);
+    }
+
+    function setSubsetChk() {
+      var isSubset = [...setB].every(i => setA.has(i));
+      alert(`B is a Subset of A: ${isSubset}`);
+    }
+
+    
+      var choice = prompt("Choose an operation:\n1 - Union\n2 - Intersection\n3 - Difference\n4 - Subset Check");
+      switch(choice){
+
+        case '1':
+            setUnionOp();
+            break;
+
+        case '2':
+            setIntersectionOp();
+            break;
+
+        case '3':
+            setDifferenceOp();
+            break;
+
+        case '4':
+            setSubsetChk();
+            break;
+
+        default:
+            alert("Invalid");
+            break;
+      }
+      
+  </script>
+</body>
+</html>

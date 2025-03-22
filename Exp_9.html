@@ -1,0 +1,132 @@
+
+<html>
+<head>
+    <title>Student Registration Form</title>
+    <script>
+        function validateForm() {
+            const name = document.forms["studentForm"]["name"].value;
+            const email = document.forms["studentForm"]["email"].value;
+            const age = document.forms["studentForm"]["age"].value;
+            const gender = document.forms["studentForm"]["gender"].value;
+            const division = document.forms["studentForm"]["division"].value;
+            const className = document.forms["studentForm"]["class"].value;
+            const rollNumber = document.forms["studentForm"]["rollNumber"].value;
+            let valid = true;
+            let errorMessage = "";
+
+            if (name === "") {
+                errorMessage += "Name must be filled out.\n";
+                valid = false;
+            }
+            if (email === "") {
+                errorMessage += "Email must be filled out.\n";
+                valid = false;
+            }
+            if (age === "" || isNaN(age) || age < 0 || age > 120) {
+                errorMessage += "Please enter a valid age.\n";
+                valid = false;
+            }
+            if (gender === "") {
+                errorMessage += "Please select a gender.\n";
+                valid = false;
+            }
+            if (division === "") {
+                errorMessage += "Please enter a division.\n";
+                valid = false;
+            }
+            if (className === "") {
+                errorMessage += "Please enter a class.\n";
+                valid = false;
+            }
+            if (rollNumber === "") {
+                errorMessage += "Please enter a roll number.\n";
+                valid = false;
+            }
+            if (!valid) {
+                alert(errorMessage);
+            }
+            return valid;
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+            if (validateForm()) {
+                const name = document.forms["studentForm"]["name"].value;
+                const email = document.forms["studentForm"]["email"].value;
+                const age = document.forms["studentForm"]["age"].value;
+                const gender = document.forms["studentForm"]["gender"].value;
+                const division = document.forms["studentForm"]["division"].value;
+                const className = document.forms["studentForm"]["class"].value;
+                const rollNumber = document.forms["studentForm"]["rollNumber"].value;
+
+                const formElements = document.querySelectorAll("#studentForm input, #studentForm select");
+                formElements.forEach(element => element.disabled = true);
+
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = `
+                    <h3>Congratulations!</h3>
+                    <p>Registration Successful!</p>
+                    <p><strong>Name:</strong> ${name}</p>
+                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Age:</strong> ${age}</p>
+                    <p><strong>Gender:</strong> ${gender}</p>
+                    <p><strong>Division:</strong> ${division}</p>
+                    <p><strong>Class:</strong> ${className}</p>
+                    <p><strong>Roll Number:</strong> ${rollNumber}</p>
+                `;
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Student Registration Form</h1>
+    </header>
+
+    <main>
+        <form id="studentForm" onsubmit="submitForm(event)">
+            <div>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="age">Age:</label><br>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <div>
+                <label for="gender">Gender:</label><br>
+                <select id="gender" name="gender" required>
+                    <option value="">Select...</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div>
+                <label for="division">Division:</label><br>
+                <input type="text" id="division" name="division" required>
+            </div>
+            <div>
+                <label for="class">Class:</label><br>
+                <input type="text" id="class" name="class" required>
+            </div>
+            <div>
+                <label for="rollNumber">Roll Number:</label><br>
+                <input type="text" id="rollNumber" name="rollNumber" required>
+            </div>
+            <br>
+            <button type="submit">Register</button>
+        </form>
+
+        <div id="result"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>

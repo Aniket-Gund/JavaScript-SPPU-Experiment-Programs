@@ -1,0 +1,84 @@
+
+<html>
+<head>
+    <title>Simple Calculator</title>
+    <script>
+        let operation;
+
+        function selectOperation(op) {
+            operation = op;
+            document.getElementById("operation").style.display = "none";
+            document.getElementById("input1").style.display = "block";
+            document.getElementById("selectedOperation").textContent = `Selected Operation: ${getOperationName(op)}`;
+            
+            if (operation !== 'square') {
+                document.getElementById("input2").style.display = "block";
+            } else {
+                document.getElementById("input2").style.display = "none";
+            }
+        }
+
+        function getOperationName(op) {
+            switch (op) {
+                case 'add': return 'Addition';
+                case 'subtract': return 'Subtraction';
+                case 'multiply': return 'Multiplication';
+                case 'divide': return 'Division';
+                case 'square': return 'Square';
+                default: return '';
+            }
+        }
+
+        function calculate() {
+            const num1 = parseFloat(document.getElementById("input1").value);
+            const num2 = operation !== 'square' ? parseFloat(document.getElementById("input2").value) : null;
+
+            if (isNaN(num1) || (num2 === null && operation !== 'square') || (isNaN(num2) && operation !== 'square')) {
+                alert("Please enter valid numbers.");
+                return;
+            }
+
+            let result;
+            switch (operation) {
+                case 'add': result = num1 + num2; break;
+                case 'subtract': result = num1 - num2; break;
+                case 'multiply': result = num1 * num2; break;
+                case 'divide': if (num2 === 0) { alert("Cannot divide by zero."); return; } result = num1 / num2; break;
+                case 'square': result = num1 * num1; break;
+                default: alert("Invalid operation."); return;
+            }
+            
+            document.getElementById("output").value = result;
+        }
+
+        function clearFields() {
+            document.getElementById("input1").value = '';
+            document.getElementById("input2").value = '';
+            document.getElementById("output").value = '';
+            document.getElementById("operation").style.display = "block";
+            document.getElementById("selectedOperation").textContent = '';
+            document.getElementById("input1").style.display = "none";
+            document.getElementById("input2").style.display = "none";
+        }
+    </script>
+</head>
+<body>
+    <div id="calculator">
+        <h2>Simple Calculator</h2>
+        <div id="selectedOperation"></div>
+        <div id="operation">
+            <h3>Select Operation:</h3>
+            <button onclick="selectOperation('add')">Add (+)</button>
+            <button onclick="selectOperation('subtract')">Subtract (-)</button>
+            <button onclick="selectOperation('multiply')">Multiply (×)</button>
+            <button onclick="selectOperation('divide')">Divide (÷)</button>
+            <button onclick="selectOperation('square')">Square (x²)</button>
+        </div>
+        <input type="text" id="input1" placeholder="Enter first number" style="display: none;" />
+        <input type="text" id="input2" placeholder="Enter second number" style="display: none;" />
+        <input type="text" id="output" placeholder="Result" disabled />
+        <button onclick="calculate()">Calculate</button>
+        <button onclick="clearFields()">Clear</button>
+    </div>
+</body>
+</html>

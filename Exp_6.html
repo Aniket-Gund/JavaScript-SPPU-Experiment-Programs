@@ -1,0 +1,50 @@
+<html>
+<head>
+  <title>Array Operations</title>
+</head>
+<body>
+  <script>
+    var arr = ["1", "2", "3"];
+    
+    function addValue() {
+      const val = prompt("Enter a number to add:");
+      if (val) {
+        arr.push(val);
+        displayArray();
+      }
+    }
+
+    function removeElement() {
+      const val = prompt("Enter a number to remove:");
+      const index = arr.indexOf(val);
+      if (index !== -1) {
+        arr.splice(index, 1);
+        displayArray();
+      } else {
+        alert("Element not found in the array.");
+      }
+    }
+
+    function checkValue() {
+      const val = prompt("Enter a value to check:");
+      alert(arr.includes(val) ? "Value found in the array." : "Value not found in the array.");
+    }
+
+    function clearArray() {
+      arr = [];
+      displayArray();
+    }
+
+    function displayArray() {
+      document.body.innerHTML = 
+        `<button onclick="addValue()">Add Element</button>
+         <button onclick="removeElement()">Remove Element</button>
+         <button onclick="clearArray()">Clear Array</button>
+         <button onclick="checkValue()">Check Value</button>
+         <p>Array: ${arr.join(", ")}</p>`;
+    }
+
+    displayArray();
+  </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <title>String Comparison</title>
+</head>
+<script type="text/javascript">
+    function method_1(str1, str2) {
+        let result = str1.localeCompare(str2);
+        document.write("Using Built-In Method" + "<br>");
+        document.write("String 1: " + str1 + "<br>");
+        document.write("String 2: " + str2 + "<br>");
+        if (result === 0) {
+            document.write("String 1 and String 2 both are Equal!!!!" + "<br>");
+        } else {
+            document.write("String 1 and String 2 are not Equal" + "<br>");
+        }
+    }
+
+    function method_2(str1, str2) {
+        document.write(" Using Characterwise checking Method" + "<br>");
+        document.write("String 1: " + str1 + "<br>");
+        document.write("String 2: " + str2 + "<br>");
+        if (str1.length !== str2.length) {
+            document.write("String 1 and String 2 are not Equal!!!!" + "<br>");
+            return;
+        }
+        let result = true;
+        for (let i = 0; i < str1.length; i++) {
+            if (str1.charAt(i) !== str2.charAt(i)) {
+                result = false;
+                break;
+            }
+        }
+        if (result) {
+            document.write("String 1 and String 2 both are Equal!!!!" + "<br>");
+        } else {
+            document.write("String 1 and String 2 are not Equal!!!" + "<br>");
+        }
+    }
+</script>
+
+<body>
+    <script type="text/javascript">
+        alert("Operations: \na. Using Inbuilt method\nb. Using Characterwise checking method");
+        let num = prompt("Enter your choice: ");
+        switch (num) {
+            case 'a':
+                let str1 = prompt("Enter the string 1: ");
+                let str2 = prompt("Enter the string 2: ");
+                method_1(str1, str2);
+                break;
+            case 'b':
+                let str3 = prompt("Enter the string 1: ");
+                let str4 = prompt("Enter the string 2: ");
+                method_2(str3, str4);
+                break;
+            default:
+                alert("Invalid Choice!!!!");
+        }
+    </script>
+</body>
+
+</html>

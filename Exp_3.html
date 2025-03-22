@@ -1,0 +1,84 @@
+<html>
+
+<head>
+    <title>String Operations</title>
+</head>
+
+<body>
+    <script>
+        function reverse() {
+            var str = prompt("Enter a String: ");
+            var arr = new Array();
+            document.writeln("Entered String: " + str + "<br>");
+            for (let num = 0; num < str.length; num++) {
+                arr[num] = str.charAt(str.length - 1 - num);
+            }
+            document.write("Reversed String: ");
+            for (let i = 0; i < arr.length; i++) {
+                document.write(arr[i]);
+            }
+        }
+    </script>
+
+    <script>
+        function replace() {
+            var val = prompt("Enter the number of characters you want in your String: ");
+            var str = "";
+            alert("Enter the entire string at once!");
+            str = prompt("Enter your String: ");
+            document.write("Inserted String: " + str + "<br>");
+
+            var num = prompt("Enter the number of characters you want to replace: ");
+            var replaceData = prompt("Enter the characters to replace and their replacements in the format 'old1:new1,old2:new2,...': ");
+            var replacements = replaceData.split(',');
+
+            for (let i = 0; i < num; i++) {
+                var pair = replacements[i].split(':');
+                str = str.replace(pair[0], pair[1]);
+            }
+
+            document.write("Replaced String: " + str);
+        }
+    </script>
+    <script>
+        function palin() {
+            var str = prompt("Enter the string: ");
+            var num = str.length;
+            var isPalindrome = true;
+            for (let i = 0; i < num / 2; i++) {
+                if (str[i] !== str[num - 1 - i]) {
+                    isPalindrome = false;
+                    break;
+                }
+            }
+            if (isPalindrome) {
+                alert("String is a palindrome");
+            } else {
+                alert("String is not a palindrome");
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        alert("Operations: \na. Reverse String\nb. Replace Characters\nc. Palindrome");
+        var num = prompt("Enter your choice: ");
+
+        switch (num) {
+            case 'a':
+                reverse();
+                break;
+
+            case 'b':
+                replace();
+                break;
+
+            case 'c':
+                palin();
+                break;
+
+            default:
+                alert("Invalid Choice!!!!");
+        }
+    </script>
+</body>
+
+</html>

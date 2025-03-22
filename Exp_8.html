@@ -1,0 +1,25 @@
+
+<html>
+<head>
+    <title>Home Page</title>
+    <script>
+        function changeBackgroundColor(color) {
+            document.body.style.backgroundColor = color;
+        }
+    </script>
+</head>
+<body onmouseover="changeBackgroundColor('#8B0A1A')" onmouseout="changeBackgroundColor('white')">
+
+<header>
+    <h1>Welcome to My Website</h1>
+</header>
+
+
+<main>
+    <h2>About Us</h2>
+    <p>This is a sample homepage created to demonstrate background color changes on events.</p>
+    <input type="text" placeholder="Focus on me!" onfocus="changeBackgroundColor('#ffff00')" onblur="changeBackgroundColor('white')">
+</main>
+
+</body>
+</html>

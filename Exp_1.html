@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>Areas</title>
+</head>
+<script type="text/javascript">
+    function rectangle(l, b){
+        var ans1= l*b;
+        alert("Area of Rectangle: "+ans1);
+    }
+
+    function circle(r){
+        var ans2 = 3.14*r**2;
+        alert("Area of Circle: "+ans2);
+
+    }
+
+    function triangle(b, h){
+
+        var ans3= 0.5*b*h;
+        alert("Area of Triangle: "+ans3);
+
+
+    }
+</script>
+<body>
+    <script type="text/javascript">
+        alert("Operations:\na.Area of Triangle\nb.Area of Rectangle\nc.Area of Circle");
+        var op=prompt("Enter operation number: ");
+
+        switch(op){
+
+            case 'a':
+                var b= prompt("Enter the value of base: ");
+                var h= prompt("enter the value of height: ");
+                triangle(b,h);
+            break;
+
+            case 'b':
+                var l=prompt("Enter the value of length: ");
+                var br= prompt("Enter the value of breadth: ");
+                rectangle(l, br);
+            break;
+
+            case 'c':
+                var r= prompt("Enter the radius: ");
+                circle(r);
+            break;
+
+            default:
+                alert("Invalid choice!!!");
+        }
+
+    </script>
+</body>
+</html>
